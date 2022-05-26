@@ -2,7 +2,7 @@
 <modification>
     <id>VQMOD CORE FOR OPENCART - DO NOT REMOVE</id>
     <version>1.4.x and above</version>
-    <vqmver required="true">2.6.0</vqmver>
+    <vqmver required="true">2.6.7</vqmver>
     <author>vqmod.com</author>
 
     <file name="system/startup.php,system/engine/*.php,system/library/*.php,admin/controller/extension/*.php,system/library/template/*.php,catalog/controller/event/theme.php,system/library/template/Twig/*.php" error="skip">
@@ -14,30 +14,6 @@
             <search position="replace" regex="true"><![CDATA[~(require|include)(_once)?\((?!VQMod::modCheck\()modification\(([^)]+)~]]></search>
             <add><![CDATA[$1$2(\\VQMod::modCheck(modification($3), $3]]></add>
         </operation>
-		<operation error="skip" info="For OC4.0 and custom admin, add code to pathReplaces to dynamically adjust the admin folder name">
-            <ignoreif>defined('DIR_CATALOG')</ignoreif>
-			<search position="after"><![CDATA[error_reporting(E_ALL);]]></search>
-            <add><![CDATA[
-$vqmod_pathReplaces = DIR_OPENCART.'vqmod/pathReplaces.php';
-
-if (is_file($vqmod_pathReplaces)) {
-	$start_tag = '// START REPLACES //';
-	
-	$pathReplaces_contents = file_get_contents($vqmod_pathReplaces);
-	
-	$new_replaces_line = "\nif (defined('DIR_CATALOG')) { \$replaces[] = array('~^admin\b~', basename(DIR_APPLICATION)); }";
-
-	if (strpos($pathReplaces_contents, $start_tag) !== false) {
-		$pathReplaces_contents = str_replace($start_tag, $start_tag. $new_replaces_line, $pathReplaces_contents);
-	} else {
-		//append to end if can't find the start tag
-		$pathReplaces_contents .= $new_replaces_line;
-	}
-
-	file_put_contents($vqmod_pathReplaces, $pathReplaces_contents);
-}
-			]]></add>
-        </operation>		
 	</file>
 
     <file name="system/library/template/Twig/*.php" error="skip">
