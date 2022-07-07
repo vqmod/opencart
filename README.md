@@ -1,4 +1,4 @@
-# opencart
+# Vqmod for opencart
 This is a repository for the opencart vqmod core script files.
 First download and install vQmod from the main repository, then install the script files from this repository for use with opencart
 
@@ -11,3 +11,8 @@ When done, you should see the following files on your server
 	vqmod/install/index.php
 
 4. Run the installer with https:/yourstore.com/vqmod/install
+
+
+# Improvment
+This fork gives the possibility to include an xml file directly inside oc 4.x extension folder, the file must be into /extension/[module]/vqmod/ in order to work.
+This way a package can be fully integrated with its modification into the module package, to avoid extra operation of uploading vqmod file by FTP.
