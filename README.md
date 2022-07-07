@@ -11,3 +11,4 @@ When done, you should see the following files on your server
 	vqmod/install/index.php
 
 4. Run the installer with https:/yourstore.com/vqmod/install
+
