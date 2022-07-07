@@ -1,4 +1,4 @@
-# Vqmod for opencart
+# opencart
 This is a repository for the opencart vqmod core script files.
 First download and install vQmod from the main repository, then install the script files from this repository for use with opencart
 
